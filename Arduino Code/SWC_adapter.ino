@@ -1,8 +1,8 @@
-#include <MCP4151.h>
-#include <SPI.h>
+#include <MCP4151.h> // This project uses the MCP4151 IC, so also its library
+#include <SPI.h> // SPI, or Serial Peripheral Interface; Necessary for communication with the MCP4151
 
 // Introduction of RadioProfile in which various buttons are declared as variables.
-// These are specific to the buttons on the XM steering wheel. Extra variables can be added for a double press or longpress.
+// These are specific to the buttons on the XM steering wheel. Extra variables can be added for a double press or longpress, on any button you desire. 
 struct RadioProfile {
   const char* name;
   uint8_t volDown;
@@ -26,8 +26,8 @@ Necessary steps = (255 * 62000) / 100000 = 158,1 -> 158 steps on the potentiomet
 */
 
 RadioProfile profiles[] = {
-  {"Pioneer", 31, 20, 10, 14, 255, 255, 0, 14, 10, 4}, // Values for Pioneer
-  {"Sony", 65, 50, 35, 25, 19, 14, 2, 4, 6, 8} // Values for Sony
+  {"Pioneer", 31, 20, 10, 14, 255, 255, 0, 14, 10, 4}, // Values for Pioneer, mostly placeholders, not yet correct
+  {"Sony", 65, 50, 35, 25, 19, 14, 2, 4, 6, 8} // Values for Sony, mostly placeholders, not yet correct
 };
 
 int currentProfile = 0; // Index of the current profile
