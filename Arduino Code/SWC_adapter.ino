@@ -1,7 +1,8 @@
 #include <MCP4151.h>
 #include <SPI.h>
 
-// Introduction of RadioProfile in which various buttons are declared as variables
+// Introduction of RadioProfile in which various buttons are declared as variables.
+// These are specific to the buttons on the XM steering wheel. Extra variables can be added for a double press or longpress.
 struct RadioProfile {
   const char* name;
   uint8_t volDown;
@@ -16,15 +17,17 @@ struct RadioProfile {
   uint8_t mute;
 };
 
-// Create the profiles themselves. For now, these are Pioneer and Sony. These are saved as arrays, in which Arduino code can easily select them.
-// See the structure above to see in which order you should input these. 
-// Calculating the steps required for the resistance you want:
-// The digipot has 255 steps between 0 and 100k Ohm. To calculate the necessary steps for (let's say) 62000 ohm, calculate as follows:
-// Necessary steps = (255 * 62000) / 100000 = 158,1 -> 158 steps on the potentiometer.
+/* 
+Create the profiles themselves. For now, these are Pioneer and Sony. These are saved as arrays, in which Arduino code can easily select them.
+See the structure above to see in which order you should input these. 
+Calculating the steps required for the resistance you want:
+The digipot has 255 steps between 0 and 100k Ohm. To calculate the necessary steps for (let's say) 62000 ohm, calculate as follows:
+Necessary steps = (255 * 62000) / 100000 = 158,1 -> 158 steps on the potentiometer.
+*/
 
 RadioProfile profiles[] = {
-  {"Pioneer", 31, 20, 10, 14, 255, 255, 0, 14, 10, 4},
-  {"Sony", 65, 50, 35, 25, 19, 14, 2, 4, 6, 8} // Weerstandswaarden voor Sony profiel
+  {"Pioneer", 31, 20, 10, 14, 255, 255, 0, 14, 10, 4}, // Values for Pioneer
+  {"Sony", 65, 50, 35, 25, 19, 14, 2, 4, 6, 8} // Values for Sony
 };
 
 int currentProfile = 0; // Index of the current profile
@@ -41,8 +44,8 @@ void switchProfile(int profileIndex) {
 }
 
 // Arduino pin assignments
-const int pin2 = A0; // Pin 2 van stuurbediening
-const int pin4 = A1; // Pin 4 van stuurbediening
+const int pin2 = A0; // Pin 2 of SWC connector
+const int pin4 = A1; // Pin 4 of SWC connector
 const float knownResistor = 1000.0; // 1k ohm reference resistor
 
 // MCP4151 settings
