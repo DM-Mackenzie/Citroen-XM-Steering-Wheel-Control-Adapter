@@ -79,6 +79,7 @@ void setPotentiometer(uint8_t value) {
   pot.writeValue(value); // set potentiometer write value with variable "value"
 }
 
+// Setup, code that is to be run once at the initialization of the microcontroller
 void setup() {
   Serial.begin(9600); // enable serial monitor for debugging
   SPI.begin(); // Start SPI communication with MCP4151
@@ -90,6 +91,7 @@ void setup() {
   switchProfile(currentProfile);
 }
 
+// Loop, code that will run continuously in a loop infinitely
 void loop() {
   int value2 = analogRead(pin2); // Simple analogRead from pin 2
   int value4 = analogRead(pin4); // Simple analogRead from pin 4
@@ -148,6 +150,7 @@ void loop() {
   delay(50); // small delay to make serial monitor more readable. Comment out when using this permanent
 }
 
+// Function to handle button presses. Can also detect single or double press.
 void handleButtonPress(String button, unsigned long* lastPressTime, bool* waitingForSecondPress, unsigned long currentTime, RadioProfile profile) {
   if (*waitingForSecondPress) {
     if (currentTime - *lastPressTime <= doublePressDelay) {
@@ -175,6 +178,7 @@ void handleButtonPress(String button, unsigned long* lastPressTime, bool* waitin
   }
 }
 
+// Function to detect a long press on a button. This can add additional functionality.
 void handleLongPress(String button, unsigned long* pressStartTime, bool* longPressActive, unsigned long currentTime, RadioProfile profile) {
   if (!*longPressActive) {
     *pressStartTime = currentTime;
