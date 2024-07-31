@@ -8,6 +8,8 @@ This project contains a steering wheel control adapter, to make the existing but
 5. Be educational in the workings of the steering wheel control of this car
 6. Code and PCB can be easily understood and adapted by others
 
+The code and project is created with an Atmel328p in mind (like in the Arduino Uno) but will probably work (with minor adaptions) on other boards.
+
 ## License
 
 This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License - see the [LICENSE](LICENSE.md) file for details.
