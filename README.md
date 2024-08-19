@@ -5,7 +5,7 @@ This project contains a steering wheel control adapter, to make the existing but
 2. Be able to select different profiles in the code for different brands (For now at least Pioneer and Sony)
 3. Have additional detection for possible extra functions; double press - and long press detection. (Siri commands, call, etc.)
 4. LED's inside the original buttons must work
-5. Be educational in the workings of the steering wheel control of this car
+5. Clearly show build-up and functionality of existing SWC
 6. Code and PCB can be easily understood and adapted by others
 
 The code and project is created with an Atmel328p in mind (like in the Arduino Uno) but will probably work (with minor adaptions) on other boards.
